@@ -50,7 +50,7 @@ export default {
                 nid:nid,
                 content:this.msg
             })
-            var url="http://127.0.0.1:3000/addcomment";
+            var url="http://49.232.158.155:3000/addcomment";
             this.axios.post(url,postData).then(result=>{
                 Toast("发表成功");
                 this.msg="";
@@ -63,7 +63,7 @@ export default {
             this.pno++;
             var nid=this.$route.query.nid;
             //console.log(nid);
-            var url="http://127.0.0.1:3000/getcomment?nid="+nid;
+            var url="http://49.232.158.155:3000/getcomment?nid="+nid;
             url+="&pno="+this.pno;
             url+="&pageSize="+this.pageSize;
             this.axios.get(url).then(result=>{

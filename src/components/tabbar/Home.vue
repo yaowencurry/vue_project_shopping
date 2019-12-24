@@ -99,7 +99,8 @@
                 this.$router.push("/newslist")
             },
             handleImg(){
-                var url="http://49.232.158.155:3000/imageList"
+                var url = "http://49.232.158.155:3000/imageList";
+                console.log(url);
                 this.axios(url).then(res=>{
                     //console.log(res)
                     this.list=res.data;

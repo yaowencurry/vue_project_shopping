@@ -119,7 +119,7 @@ export default {
         },
         getSpec(){
             var pid = this.$route.query.pid;
-            var url = "http://127.0.0.1:3000/getspec?pid="+pid;
+            var url = "http://49.232.158.155:3000/getspec?pid="+pid;
             this.axios.get(url).then(result=>{
                 this.spec = result.data.data;
             });
@@ -145,7 +145,7 @@ export default {
         },
         //轮播图请求数据
         getImages(){
-            var url = "http://127.0.0.1:3000/imageList";
+            var url = "http://49.232.158.155:3000/imageList";
             this.axios.get(url).then(result=>{
                 this.rows = result.data;
             })
@@ -159,11 +159,11 @@ export default {
         //商品详细信息请求数据
         getgoodinfo(){
             var pid=this.$route.query.pid;
-            var url = "http://127.0.0.1:3000/getgoodinfo?pid="+pid;
+            var url = "http://49.232.158.155:3000/getgoodinfo?pid="+pid;
             this.axios.get(url).then(result=>{
                 var obj = result.data.data[0];
-                obj.nmd = "http://127.0.0.1:3000/"+obj.md;
-                obj.nlg = "http://127.0.0.1:3000/"+obj.lg;
+                obj.nmd = "http://49.232.158.155:3000/"+obj.md;
+                obj.nlg = "http://49.232.158.155:3000/"+obj.lg;
                 this.goodinfo = obj;
             })
         },
@@ -175,7 +175,7 @@ export default {
             var date=new Date();
             date.toLocaleString();
             var ctime=`${date.getFullYear()}-${date.getMonth()+1>10 ? date.getMonth()+1 : "0"+date.getMonth()+1}-${date.getDate()>10?date.getDate():"0"+date.getDate()}%20${date.getHours()>10?date.getHours():"0"+date.getHours()}:${date.getMinutes()>10?date.getMinutes():"0"+date.getMinutes()}:${date.getSeconds()>10?date.getSeconds():"0"+date.getSeconds()}`;
-            var url=`http://127.0.0.1:3000/addcart?pid=${pid}&count=${count}&price=${price}&ctime=${ctime}`;
+            var url=`http://49.232.158.155:3000/addcart?pid=${pid}&count=${count}&price=${price}&ctime=${ctime}`;
             encodeURI(url);
             this.axios.get(url).then(result=>{
                 Toast(result.data.msg);

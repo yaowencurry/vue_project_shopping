@@ -5,7 +5,7 @@
         </div>
         <div class="product-card" v-for="(item,i) in list" :key="i">
             <router-link :to="'/goodsinfo?pid='+item.lid">
-                <img :src="'http://127.0.0.1:3000/'+item.md">
+                <img :src="'http://49.232.158.155:3000/'+item.md">
                 <p>
                     {{item.title.length > 30 ? item.title.substring(0,30)+"..." : item.title}}
                 </p>
@@ -30,7 +30,7 @@ export default {
     methods:{
         getMore(){
             this.pno++;
-            var url="http://127.0.0.1:3000/products";
+            var url="http://49.232.158.155:3000/products";
             url+="?pno="+this.pno;
             url+="&pageSize="+this.pageSize;
             //console.log(url);

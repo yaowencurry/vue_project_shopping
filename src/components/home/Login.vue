@@ -45,7 +45,7 @@ export default {
         register(){
             // var uname=this.uname;
             // var upwd=this.upwd;
-            // var url="http://127.0.0.1:3000/register?";
+            // var url="http://49.232.158.155:3000/register?";
             // url+="uname="+this.uname;
             // url+="&upwd="+this.upwd;
             // this.axios.get(url).then(result=>{
@@ -58,7 +58,7 @@ export default {
         login(){
             var uname=this.uname;
             var upwd=this.upwd;
-            var url="http://127.0.0.1:3000/login?"
+            var url="http://49.232.158.155:3000/login?"
             url+="uname="+this.uname;
             url+="&upwd="+this.upwd;
             this.axios.get(url).then(result=>{

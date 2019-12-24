@@ -1,7 +1,7 @@
 <template>
 <div id="app-newsinfo">
     <div class="mui-card">
-        <div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(http://127.0.0.1:3000/1.png)"></div>
+        <div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(http://49.232.158.155:3000/1.png)"></div>
             <div class="mui-card-content">
                 <div class="mui-card-content-inner">
                     <p>Posted on {{info.ctime | nesDateFilter}}</p>
@@ -30,7 +30,7 @@ export default {
         getNewsInfo(){
             var id=this.$route.query.nid;
             //console.log(id);
-            var url="http://127.0.0.1:3000/newsinfo?id="+id;
+            var url="http://49.232.158.155:3000/newsinfo?id="+id;
             this.axios.get(url).then(result=>{
                 //console.log(result.data.data[0]);
                 this.info=result.data.data[0];

@@ -59,7 +59,7 @@ export default {
                 Toast("密码不能为空");
                 return;
             }
-            var url="http://127.0.0.1:3000/register?";
+            var url="http://49.232.158.155:3000/register?";
             url+="uname="+this.uname;
             url+="&upwd="+this.upwd;
             url+="&mobile="+this.mobile;

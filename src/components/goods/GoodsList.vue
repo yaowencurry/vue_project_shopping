@@ -1,7 +1,7 @@
 <template>
     <div id="app-goodslist">
         <div class="good-item" v-for="item in list" :key="item.lid">
-            <img :src="'http://127.0.0.1:3000/'+item.md"  @click="jump" :data-lid="item.lid">
+            <img :src="'http://49.232.158.155:3000/'+item.md"  @click="jump" :data-lid="item.lid">
             <h4>{{item.lname}}</h4>
             <div class="info">
                 <span class="now">{{(item.price).toFixed(2)}}</span>
@@ -32,7 +32,7 @@ export default {
         },
         getMore(){
             this.pno++;
-            var url="http://127.0.0.1:3000/products";
+            var url="http://49.232.158.155:3000/products";
             url+="?pno="+this.pno;
             url+="&pageSize="+this.pageSize;
             //console.log(url);

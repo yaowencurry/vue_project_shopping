@@ -27,7 +27,7 @@ export default {
     },
     methods:{
         getMemberInfo(){
-            var url="http://127.0.0.1:3000/myself"
+            var url="http://49.232.158.155:3000/myself"
             this.axios.get(url).then(result=>{
                 //console.log(result);
                 if(result.data.code==-1){
@@ -52,7 +52,7 @@ export default {
             })
         },
         loginout(){
-            var url="http://127.0.0.1:3000/loginout";
+            var url="http://49.232.158.155:3000/loginout";
             this.axios.get(url).then(result=>{
                 Toast(result.data.msg);
                 this.$router.push("/home");

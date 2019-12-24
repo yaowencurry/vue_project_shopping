@@ -75,7 +75,7 @@ export default {
         },
         getlist(){
             var contentClass = 1;
-            var url = "http://127.0.0.1:3000/gethotcircle?class=";
+            var url = "http://49.232.158.155:3000/gethotcircle?class=";
             url += contentClass;
             this.axios.get(url).then((result)=>{
                 this.list=result.data.data.reverse();

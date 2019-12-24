@@ -37,7 +37,7 @@ export default {
                 Toast("发表失败");
                 return;
             }
-            this.axios(`http://127.0.0.1:3000/hotcircle?content=${this.content}`).then(result=>{
+            this.axios(`http://49.232.158.155:3000/hotcircle?content=${this.content}`).then(result=>{
                 if(result.data.code==0){
                     MessageBox.confirm('',{
                         title:'提示',

@@ -33,7 +33,7 @@
                     <input type="checkbox" style="width:20px;height:20px;" :checked="item.cb"  @click="modifyItem" :data-i="i" class="checkbox">
                 </div>
                 <div class="cart-img">
-                    <img :src="'http://127.0.0.1:3000/'+item.md">
+                    <img :src="'http://49.232.158.155:3000/'+item.md">
                 </div>
                 <div class="cart-info">
                     <h4>{{item.title}}</h4>
@@ -76,7 +76,7 @@ export default {
     methods:{
         getShopCart(){
             var uid=2;
-            var url=`http://127.0.0.1:3000/getShopCart?uid=${uid}`;
+            var url=`http://49.232.158.155:3000/getShopCart?uid=${uid}`;
             this.axios.get(url).then(result=>{
                 //console.log(result.data.code);
                 //如果未登录状态
@@ -119,7 +119,7 @@ export default {
             var pid=e.target.dataset.pid;
             var count=i;
             var price=e.target.dataset.price;
-            var url=`http://127.0.0.1:3000/addcart?pid=${pid}&count=${count}&price=${price}`;
+            var url=`http://49.232.158.155:3000/addcart?pid=${pid}&count=${count}&price=${price}`;
             this.axios.get(url).then(result=>{
                 Toast(result.data.msg);
                 this.getShopCart();
@@ -128,7 +128,7 @@ export default {
         delItem(e){
             var ids=e.target.dataset.id;
             //console.log(ids);
-            var url="http://127.0.0.1:3000/delItem?ids="+ids;
+            var url="http://49.232.158.155:3000/delItem?ids="+ids;
             //console.log(url);
             this.axios.get(url).then(result=>{
                 Toast(result.data.msg);
@@ -166,7 +166,7 @@ export default {
                 }
             }
             html=html.substring(0,html.length-1);
-            var url="http://127.0.0.1:3000/delItem?ids="+html;
+            var url="http://49.232.158.155:3000/delItem?ids="+html;
             this.axios.get(url).then(result=>{
                 Toast(result.data.msg);
                 this.getShopCart();

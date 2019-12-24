@@ -31,7 +31,7 @@ export default {
             //1.修改当前页码+1
             this.pno++;
             //2.发送请求get
-            var url="http://127.0.0.1:3000";
+            var url="http://49.232.158.155:3000";
             url+="/newsList?pno="+this.pno;
             url+="&pageSize="+this.pageSize;
             this.axios.get(url).then(res=>{
@@ -44,7 +44,7 @@ export default {
             })
         },
         getnewsList(){
-            var url="http://127.0.0.1:3000/newsList";
+            var url="http://49.232.158.155:3000/newsList";
             this.axios.get(url).then(res=>{
                 this.list=res.data.data;
             })

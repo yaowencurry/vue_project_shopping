@@ -83,7 +83,7 @@ export default {
                 order_count:this.obj.count,
                 order_remark:this.remark
             });
-            var url = "http://127.0.0.1:3000/order";
+            var url = "http://49.232.158.155:3000/order";
             this.axios.post(url,postData).then(res=>{
                 if(res.data.code==-1){
                     Toast("当前用户未登录");
