@@ -60,14 +60,23 @@ Vue.config.productionTip = false
 //6:全局设置post 时候表音的数据组织格式为 application/x-www-form-urlencoded
 //Vue.http.options.emulateJSON = true;
 //7.导入 MUI 的样式表， 和 Bootstrap 用法没有差别
-import './lib/mui/css/mui.css'
-// 导入 MUI 的样式表，扩展图标样式，购物车图标
-// 还需要加载图标字体文件
-import './lib/mui/css/icons-extra.css'
+// import './assets/lib/mui/css/mui.css'
+// // 导入 MUI 的样式表，扩展图标样式，购物车图标
+// // 还需要加载图标字体文件
+// import './assets/lib/mui/css/icons-extra.css'
 
-//引入layui
-import './lib/layui/css/layui.css'
-import './lib/layui/css/layui.mobile.css'
+// //引入layui
+// import './assets/lib/layui/css/layui.css'
+// import './assets/lib/layui/css/layui.mobile.css'
+
+//从static中引入mintui和layui
+import '../static/lib/mui/css/mui.css'
+import '../static/lib/mui/css/icons-extra.css'
+import '../static/lib/layui/css/layui.css'
+import '../static/lib/layui/css/layui.mobile.css'
+
+
+
 
 import Mint from 'mint-ui';
 Vue.use(Mint);

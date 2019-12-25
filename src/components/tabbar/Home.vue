@@ -11,13 +11,15 @@
         </div>
         <!--顶部栏-->
         <!--banner图片-->
-        <mt-swipe>
-            <mt-swipe-item v-for="(item,i) of list" :key="i">
-                <router-link :to="'/goodsinfo?pid='+parseInt(i+5)">
-                    <img class="banner-img" :src="item.img_url">
-                </router-link>
-            </mt-swipe-item>
-        </mt-swipe>
+        <div class="banner">
+            <mt-swipe>
+                <mt-swipe-item v-for="(item,i) of list" :key="i">
+                    <router-link :to="'/goodsinfo?pid='+parseInt(i+5)">
+                        <img class="banner-img" :src="item.img_url">
+                    </router-link>
+                </mt-swipe-item>
+            </mt-swipe>
+        </div>
         <!--爆款-->
         <div id="hot-goods">
             <a href="">
@@ -116,13 +118,19 @@
     })
 </script>
 <style scoped>
+    .banner{
+        padding:20px 0;
+        background-image: url(/static/img/1132b0b9cf6fac68.a25f743.png);
+        background-repeat: no-repeat;
+        background-size: 100% 300px;
+    }
     .top-header{
         width:100%;
-        height:40px;
-        background-color: #c82519;
+        height:60px;
+        background-color: #f83c31;
         display: flex;
         justify-content: space-between;
-        line-height: 40px;
+        line-height: 60px;
         padding:0 10px;
         position: fixed;
         z-index: 10;
@@ -132,7 +140,7 @@
     .top-header>input{
         width:80%;
         border-radius: 20px;
-        margin-top:2.5px;
+        margin-top:13.5px;
         height:35px;
         line-height: 40px;
     }
@@ -171,7 +179,9 @@
         width:90%;
         height:156px;
         margin:10px auto;
+        margin-top: 30px;
         border-radius: 20px;
+        background-image: url('../../assets/img/1132b0b9cf6fac68.png')
     }
     .banner-img{
         height:156px;
