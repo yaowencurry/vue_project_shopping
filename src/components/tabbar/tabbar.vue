@@ -20,7 +20,7 @@
             </router-link>
             <router-link class="mui-tab-item" href="#tabbar-with-chat" to="/myself" :class="{active:shows==4}" @click.native="getActive4">
                 <span class="mui-icon mui-icon-contact"></span>
-                <span class="mui-tab-label">会员</span>
+                <span class="mui-tab-label">我的</span>
             </router-link>
         </nav>
     </div>

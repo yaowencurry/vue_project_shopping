@@ -1,19 +1,45 @@
 <template>
     <div class="app-myself">
-        <div class="top">
+        <tabbar></tabbar>
+        <div class="myself-top">
             <h4>个人中心</h4>
         </div>
-        <div class="header">
-            <div class="myimg"></div>
-            <div>{{info.uname}}</div>
+        <div class="myself">
+            <div class="myself-info">
+                <div class="self-img">
+                </div>
+                <div class="self-content">
+                    <h4>用户名: {{info.uname}}</h4>
+                    <p>手机号: {{info.mobile}}</p>
+                </div>
+            </div>
+            <div class="myself-order">
+                <ul>
+                    <li>
+                        <span>待发货订单</span>
+                        <span>
+                            <span>6</span>
+                            <i class="layui-icon layui-icon-right"></i>
+                        </span>
+                    </li>
+                    <li>
+                        <span>待收货订单</span>
+                        <span>
+                            <span>6</span>
+                            <i class="layui-icon layui-icon-right"></i>
+                        </span>
+                    </li>
+                    <li>
+                        <span>待评价订单</span>
+                        <span>
+                            <span>6</span>
+                            <i class="layui-icon layui-icon-right"></i>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <button @click="loginout" class="layui-btn">退出登录</button>
         </div>
-        <div class="content">
-            
-        </div>
-        <tabbar></tabbar>
-        用户名:{{info.uname}}<br>
-        密码:{{info.upwd}}
-        <button @click="loginout" class="layui-btn">退出登录</button>
     </div>
 </template>
 <script>
@@ -66,6 +92,63 @@ export default {
 }
 </script>
 <style scoped>
+.layui-btn{
+    position: absolute;
+    top:70%;
+    left:37%;
+}
+.myself-order>ul>li>span>span{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #f83c31;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+}
+.myself-order>ul>li{
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.myself-order{
+    margin-top: 20px;
+}
+.self-content>h4{
+    margin-bottom: 10px;
+}
+.self-content{
+    height: 100px;
+    padding-top: 30px;
+}
+.self-img{
+    width: 100px;
+    height: 100px;
+    border:1px solid #ccc;
+    margin-right: 30px;
+    border-radius: 50%;
+    background-image: url('/static/img/1132b0b9cf6fac68.a25f743.png');
+    background-size: 100px;
+}
+.myself-top>h4{
+    line-height: 40px;
+    color: #fff;
+}
+.myself-top{
+    height:40px;
+    text-align: center;
+    background-color: #f83c31;
+}
+.myself{
+    padding: 0 20px;
+}
+.myself-info{
+    display: flex;
+    margin-top: 20px;
+}
 .header>.myimg{
     width:70px;height:70px;
     background-color: pink;

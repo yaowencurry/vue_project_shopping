@@ -34,7 +34,7 @@ Vue.use(Vuex);
 //创建store对象
 var store=new Vuex.Store({
   state:{
-    cartCount:sessionStorage.getItem("cartCount")||0
+    cartCount:sessionStorage.getItem("cartCount") || 0
   },
   mutations:{
     increment(state){
