@@ -76,7 +76,9 @@ import '../static/lib/layui/css/layui.css'
 import '../static/lib/layui/css/layui.mobile.css'
 
 
-
+//配置测试和正式环境下的接口地址
+import BaseUrl from './assets/js/apiUrl.js';
+Vue.prototype.BaseUrl = BaseUrl;
 
 import Mint from 'mint-ui';
 Vue.use(Mint);

@@ -1,13 +1,13 @@
 <template>
     <div class="app-searchlist">
         <search></search>
-        <div class="app-searchlist-item" style="font-weight:bold">
+        <div class="app-searchlist-item searchlist-header" style="font-weight:bold">
             <span>序号</span>
             <span>商品名称</span>
             <span>商品价格</span>
             <span>操作</span>
         </div>
-        <div class="app-searchlist-item" v-for="(item,i) in list" :key="i" :data-lid="item.lid" @click="jump" >
+        <div class="app-searchlist-item" v-for="(item,i) in list" :key="i">
             <span>{{i+1}}</span>
             <span>{{item.lname.length >7 ? item.lname.substring(0,7)+"..." : item.lname}}</span>
             <span>{{item.price}}</span>
@@ -41,8 +41,7 @@ export default {
             })
         },
         jump(e){
-            var pid=e.target.dataset.lid;
-            //console.log(pid);
+            var pid = e.target.dataset.lid;
             this.$router.push("/goodsinfo?pid="+pid)
         }
     },
@@ -62,14 +61,15 @@ export default {
     width:100%;
     height:60px;
     padding:0 20px;
-    line-height: 50px;
+    line-height: 60px;
     background:#fff;
     font-size:16px;
     display:flex;
     justify-content: space-between;
+    border-bottom: 1px solid #eee;
 }
 .layui-btn{
-    background-color: #c82519;
+    background-color: #f83c31;
     width:80px;
     height:30px;
     text-align:center;

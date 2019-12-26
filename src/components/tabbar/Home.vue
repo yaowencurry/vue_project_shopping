@@ -6,7 +6,10 @@
         <!--<search></search>-->
         <div class="top-header">
             <i class="layui-icon layui-icon-username" style="color:#fff;font-size:28px;" @click="jumpMyself"></i>
-            <input type="text" name="" id="" placeholder="请输入商品名称">
+            <div class="serach">
+                <input type="text" name="" id="" placeholder="请输入商品名称" v-model="content" @keyup.13="search">
+                <i class="layui-icon layui-icon-search" @click="search"></i>
+            </div>
             <i class="layui-icon layui-icon-cart" style="color:#fff;font-size:28px;" @click="jumpShopCart"></i>
         </div>
         <!--顶部栏-->
@@ -80,14 +83,26 @@
 <script>
     import homproduct from "../sub/homeProduct.vue"
     import search from "../sub/search.vue"
+    import {Toast} from "mint-ui"
     export default({
         data(){
             return {
                 list:[],
-                loadMore:true
+                loadMore:true,
+                content:""
             }
         },
         methods:{
+            search(){
+                var content=this.content;
+                var size=content.trim().length;
+                if(size==0){
+                    Toast("输入不能为空");
+                    return;
+                }
+                this.$router.push("/searchlist?content="+content);
+                location.reload();
+            },
             jumpMyself(){
                 this.$router.push("/myself")
             },
@@ -101,8 +116,7 @@
                 this.$router.push("/newslist")
             },
             handleImg(){
-                var url = "http://49.232.158.155:3000/imageList";
-                console.log(url);
+                var url =  "http://49.232.158.155:3000/imageList";
                 this.axios(url).then(res=>{
                     //console.log(res)
                     this.list=res.data;
@@ -118,78 +132,90 @@
     })
 </script>
 <style scoped>
-    .banner{
-        padding:20px 0;
-        background-image: url(/static/img/1132b0b9cf6fac68.a25f743.png);
-        background-repeat: no-repeat;
-        background-size: 100% 300px;
-    }
-    .top-header{
-        width:100%;
-        height:60px;
-        background-color: #f83c31;
-        display: flex;
-        justify-content: space-between;
-        line-height: 60px;
-        padding:0 10px;
-        position: fixed;
-        z-index: 10;
-        top:0;
-        left:0;
-    }
-    .top-header>input{
-        width:80%;
-        border-radius: 20px;
-        margin-top:13.5px;
-        height:35px;
-        line-height: 40px;
-    }
-    #hot-goods{
-        padding:0 10px;
-        width:100%;
-        border-radius:20px;
-    }
-    #hot-goods img{
-        border-radius:20px;
-        width:100%;
-    }
-    #row-item{
-        margin-top:8px;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    #row-item .row-item-col{
-        width:20%;
-    }
-    #row-item .row-item-col{
-        height:80px;
-        text-align:center;
-        line-height:45px;
-    }
-    #row-item .row-item-col>div{
-        line-height:35px;
-        font-size:10px;
-        color: #666;
-    }
-    #row-item img{
-        width:60%;
-    }
-    .mint-swipe{
-        width:90%;
-        height:156px;
-        margin:10px auto;
-        margin-top: 30px;
-        border-radius: 20px;
-        background-image: url('../../assets/img/1132b0b9cf6fac68.png')
-    }
-    .banner-img{
-        height:156px;
-    }
-    .mui-grid-9 img{
-        width:60px;
-    }
-    .app-home .mui-grid-9{
-        background:#fff;
-    }
+.top-header .serach input{
+    width:100%;
+    border-radius: 20px; 
+    height:35px;
+    line-height: 40px;
+    border:none;
+}
+.serach i{
+    font-size:28px;
+    color: #f83c31;
+    position: absolute;
+    right: 10px;
+    top: -5px;
+}
+.serach{
+    position: relative;
+    margin-top:6.5px;
+    width: 75%;
+}
+.banner{
+    padding:20px 0;
+    background-image: url(/static/img/1132b0b9cf6fac68.a25f743.png);
+    background-repeat: no-repeat;
+    background-size: 100% 300px;
+}
+.top-header{
+    width:100%;
+    height:60px;
+    background-color: #f83c31;
+    display: flex;
+    justify-content: space-between;
+    line-height: 60px;
+    padding:0 10px;
+    position: fixed;
+    z-index: 10;
+    top:0;
+    left:0;
+}
+#hot-goods{
+    padding:0 10px;
+    width:100%;
+    border-radius:20px;
+}
+#hot-goods img{
+    border-radius:20px;
+    width:100%;
+}
+#row-item{
+    margin-top:8px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+#row-item .row-item-col{
+    width:20%;
+}
+#row-item .row-item-col{
+    height:80px;
+    text-align:center;
+    line-height:45px;
+}
+#row-item .row-item-col>div{
+    line-height:35px;
+    font-size:10px;
+    color: #666;
+}
+#row-item img{
+    width:60%;
+}
+.mint-swipe{
+    width:90%;
+    height:156px;
+    margin:10px auto;
+    margin-top: 30px;
+    border-radius: 20px;
+    background-image: url('../../assets/img/1132b0b9cf6fac68.png')
+}
+.banner-img{
+    height:156px;
+}
+.mui-grid-9 img{
+    width:60px;
+}
+.app-home .mui-grid-9{
+    background:#fff;
+}
 </style>

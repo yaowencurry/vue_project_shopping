@@ -6,7 +6,7 @@
                 <button class="layui-btn" @click="search">搜索</button>
             </div>
             <div class="logo">
-                <i class="layui-icon layui-icon-username" style="color:#fff;font-size:26px;"></i>
+                <i class="layui-icon layui-icon-home" style="color:#fff;font-size:26px;" @click="goHome"></i>
             </div>
             <div class="cart-icon" @click="jumpShopCart">
                 <i class="layui-icon layui-icon-cart" style="color:#fff;font-size:26px;"></i>
@@ -23,6 +23,9 @@ export default {
         }
     },
     methods:{
+        goHome(){
+            this.$router.push("/home")
+        },
         jumpShopCart(){
             this.$router.push("/shopcart");
             this.$forceUpdate();
@@ -42,6 +45,9 @@ export default {
 }
 </script>
 <style scoped>
+.top .app-search input{
+    border:none;
+}
 .app-search{
    width:75%;
    display: flex;
@@ -54,7 +60,6 @@ export default {
 }
 .app-search button{
     position:absolute;
-    border:1px solid #c82519;
     right:47px;
     top:11px;
 }
@@ -62,7 +67,7 @@ export default {
    margin-left:-2px;
    margin-top:0.5px;
    background:#fff;
-   color:#c82519;
+   color:#f83c31;
    border-radius:20px;
 }
 .logo{
@@ -78,7 +83,7 @@ export default {
 .top{
    width:100%;
    height: 60px;
-   background:#c82519;
+   background:#f83c31;
    position: relative;
    padding-top:10px;
 }
