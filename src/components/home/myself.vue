@@ -5,7 +5,7 @@
         <div class="myself">
             <div class="common-myself myself-info">
                 <div class="self-img">
-                    <img src="" alt="">
+                    <img :src="info.img_url" alt="">
                 </div>
                 <div class="self-content">
                     <h4>我的{{info.uname}} <span></span></h4>
@@ -97,7 +97,6 @@ export default {
             var url="http://49.232.158.155:3000/myself"
             var _that = this;
             this.axios.get(url).then(result=>{
-                //console.log(result);
                 if(result.data.code==-1){
                     _that.isLogin=true;
                     MessageBox.confirm('',{
@@ -115,6 +114,7 @@ export default {
                         }
                     });
                 }else{
+                    console.log(result);
                     this.info=result.data.data[0];
                     _that.isLogin=false;
                 }
@@ -175,20 +175,29 @@ export default {
 .myself-order{
     margin-top: 20px;
 }
+.self-content>p{
+    font-size: 14px;
+    padding:2px 0;
+}
 .self-content>h4{
     margin-bottom: 10px;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
     color:#333;
 }
 .self-content{
     height: 100px;
-    padding-top:25px;
+    padding-top:18px;
+}
+.self-img>img{
+    width: 100px;
+    height:100px;
+    border:1px solid #ccc;
+    border-radius: 10px;
 }
 .self-img{
     width: 100px;
     height: 100px;
-    border:1px solid #ccc;
     margin-right: 20px;
     border-radius: 10px;
 }
