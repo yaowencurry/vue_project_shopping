@@ -48,6 +48,7 @@
             </div>
             <hr>
         </div>
+        <tabbar></tabbar>
         <!--占位，避免fied元素挡住内容>
         <div style="height:50px;"></div-->
     </div>
@@ -254,7 +255,7 @@ export default {
         display:flex;
         justify-content: space-between;
         position: fixed;
-        bottom:0;
+        bottom:46px;
         left:0px;
         z-index:10;
     }

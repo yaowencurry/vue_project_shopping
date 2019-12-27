@@ -64,7 +64,7 @@
         <!--底部加购物车、立即购买按钮框-->
         <div class="good-handle">
             <div class="cart-icon">
-                <i class="layui-icon layui-icon-rate"><span>{{this.$store.getters.commit('optCartCount')}}</span></i>
+                <i class="layui-icon layui-icon-rate"><!--span>{{this.$store.getters.commit('optCartCount')}}</span--></i>
                 <i class="layui-icon layui-icon-cart" @click="jumpCart"></i>
             </div>
             <div class="cart-handle" @click="AddCart">加入购物车</div>
