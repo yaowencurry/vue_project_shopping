@@ -295,11 +295,11 @@ a
 {
     text-decoration: none;
 
-    color: #007aff;
+    color: #f83c31;
 }
 a:active
 {
-    color: #0062cc;
+    color: #f83c31;
 }
 
 .mui-content
@@ -493,7 +493,7 @@ a:active
 
 .mui-bg-primary
 {
-    background-color: #007aff;
+    background-color: #f83c31;
 }
 
 .mui-bg-positive
@@ -1238,8 +1238,8 @@ input[type='submit'],
 .mui-btn-blue
 {
     color: #fff;
-    border: 1px solid #007aff;
-    background-color: #007aff;
+    border: 1px solid #f83c31;
+    background-color: #f83c31;
 }
 input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
 .mui-btn-primary:enabled:active,
@@ -1341,7 +1341,7 @@ input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
 }
 .mui-btn-outlined.mui-btn-primary, .mui-btn-outlined.mui-btn-blue
 {
-    color: #007aff;
+    color: #f83c31;
 }
 .mui-btn-outlined.mui-btn-positive, .mui-btn-outlined.mui-btn-success, .mui-btn-outlined.mui-btn-green
 {
