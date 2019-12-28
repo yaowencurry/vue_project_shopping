@@ -4,14 +4,14 @@
             <div class="protocol-wrap">
                 <div class="protocol-header">注册协议及隐私政策</div>
                 <div class="protocol-content">
-                    <p>您注册成为京东用户的过程中，您需要完成我们的注册流程并通过点击同意的形式在线签署以下协议</p>
+                    <p>您注册成为Once More用户的过程中，您需要完成我们的注册流程并通过点击同意的形式在线签署以下协议</p>
                     <p>请您务必仔细阅读、充分理解协议中的条款内容后再点击同意（尤其是以粗体并下划线标识的条款，因为这些条款可能会明确您应履行的义务或对您的权利有所限制）</p>
                     <p>请您务必仔细阅读、充分理解协议中的条款内容后再点击同意（尤其是以粗体并下划线标识的条款，因为这些条款可能会明确您应履行的义务或对您的权利有所限制）</p>
                     <p>请您务必仔细阅读、充分理解协议中的条款内容后再点击同意（尤其是以粗体并下划线标识的条款，因为这些条款可能会明确您应履行的义务或对您的权利有所限制）</p>
                 </div>
                 <div class="protocol-footer">
                     <div class="protocol-notice">
-                        点击同意即表示您已阅读并同意<a hres="#">《京东用户注册协议》</a>与<a hres="#">《京东隐私政策》</a>并将您的订单信息共享给为完成此订单所必需的第三方合作方，关于<a hres="#">《订单共享与安全》</a>
+                        点击同意即表示您已阅读并同意<a hres="#">《Once More用户注册协议》</a>与<a hres="#">《Once More隐私政策》</a>并将您的订单信息共享给为完成此订单所必需的第三方合作方，关于<a hres="#">《订单共享与安全》</a>
                     </div>
                     <div class="protocol-btn">
                         <span class="btn no" @click="backNo">不同意</span>
@@ -21,7 +21,7 @@
             </div>
         </div>
         <goback></goback>
-        <div class="header">京东注册</div>
+        <div class="header">Once Mor注册</div>
         <div class="register-form">
             <div>
                 <input type="text" placeholder="请输入用户名" v-model="uname">

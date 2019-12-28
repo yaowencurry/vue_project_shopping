@@ -1,5 +1,7 @@
 <template>
     <div id="app-goodslist">
+        <goback></goback>
+        <div style="width:100%;height:40px;background-color:#fff;text-align:center;line-height:40px;font-size:16px;">全部商品</div>
         <div class="good-item" v-for="item in list" :key="item.lid">
             <img :src="'http://49.232.158.155:3000/'+item.md"  @click="jump" :data-lid="item.lid">
             <h4>{{item.lname}}</h4>
@@ -50,7 +52,6 @@ export default {
         display:flex;
         justify-content:space-between;
         flex-wrap:wrap;
-        padding:4px;
     }
     #app-goodslist div.good-item{
         width:49%;

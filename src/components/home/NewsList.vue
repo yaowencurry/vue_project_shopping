@@ -1,5 +1,7 @@
 <template>
     <div class="app-newslist">
+        <goback></goback>
+        <div style="width:100%;height:40px;background-color:#fff;text-align:center;line-height:40px;font-size:16px;">好品新闻</div>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell mui-media" v-for="item of list" :key="item.id">
                 <router-link :to="'/newsinfo?nid='+item.id">

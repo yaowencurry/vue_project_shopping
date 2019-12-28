@@ -25,19 +25,19 @@
         </div>
         <!--爆款-->
         <div id="hot-goods">
-            <a href="">
+            <router-link to="/goodslist">
                 <img src="https://m.360buyimg.com/mobilecms/jfs/t1/91734/5/2381/102866/5dceaceeEdd151713/9cda57f34bbd6750.gif">
-            </a>
+            </router-link>
         </div>
         <!--九宫格-->
         <div style="padding:10px;" id="row-item">
             <div class="row-item-col" @click="jumpNew">
                 <img src="https://m.360buyimg.com/mobilecms/s120x120_jfs/t1/20983/16/10753/6124/5c8a16aaE5d6b15d7/01e0e818a7505267.png.webp" alt="">
-                <div>好品超市</div>
+                <div>好品新闻</div>
             </div>
             <div class="row-item-col" @click="goPhone">
                 <img src="https://m.360buyimg.com/mobilecms/s120x120_jfs/t1/39401/17/2391/5859/5cc06fcfE2ad40668/28cda0a571b4a576.png.webp" alt="">
-                <div>数码电器</div>
+                <div>好品超市</div>
             </div>
             <div class="row-item-col">
                 <img src="https://m.360buyimg.com/mobilecms/s120x120_jfs/t1/17169/3/4127/4611/5c2f35cfEd87b0dd5/65c0cdc1362635fc.png.webp" alt="">
@@ -63,13 +63,12 @@
                 <img src="https://m.360buyimg.com/mobilecms/s120x120_jfs/t16990/157/2001547525/17770/a7b93378/5ae01befN2494769f.png.webp" alt="">
                 <div>好品到家</div>
             </div>
-            <div class="row-item-col">
-                <img src="https://m.360buyimg.com/mobilecms/s120x120_jfs/t16990/157/2001547525/17770/a7b93378/5ae01befN2494769f.png.webp" alt="">
-                <div>好品到家</div>
-            </div>
-            <div class="row-item-col">
-                <img src="https://m.360buyimg.com/mobilecms/s120x120_jfs/t16990/157/2001547525/17770/a7b93378/5ae01befN2494769f.png.webp" alt="">
-                <div>好品到家</div>
+        </div>
+        <!--咨询信息-->
+        <div class="first-news">
+            <div>最新<br>快讯</div>
+            <div :class="{anim:animate==true}">
+                <p v-for="(item,i) in items" :key="i">{{item.name}}</p>
             </div>
         </div>
         <!--秒杀区域-->
@@ -89,10 +88,26 @@
             return {
                 list:[],
                 loadMore:true,
-                content:""
+                content:"",
+                items:[
+                    {name:"1.2亿次速度蓝牙面板Jabra耳机飞速到天际"},
+                    {name:"华为FreeBuds 3真机体验，续航能力长.…"},
+                    {name:"华为MatePad Pro新配色亮相，现已开…"},
+                    {name:"三星Notebook 7释放惊喜价，256G售…"},
+                    {name:"Amazfit GTS新品体验：性能升级超强…"},
+                    {name:"重新定义运动耳机，黑科技加持更出色"}
+                ]
             }
         },
         methods:{
+            scroll(){
+                this.animate=true;
+                setTimeout(() => {
+                    this.items.push(this.items[0]);
+                    this.items.shift();
+                    this.animate=false;
+                }, 1500);
+            },
             search(){
                 var content=this.content;
                 var size=content.trim().length;
@@ -125,6 +140,7 @@
         },
         created(){
             this.handleImg();
+            setInterval(this.scroll,1500);
         },
         components:{
             "homproduct":homproduct,
@@ -132,6 +148,39 @@
     })
 </script>
 <style scoped>
+.anim{
+    transition: all 0.2s;
+    margin-top: -30px;
+}
+.first-news>div>p{
+    color:#333;
+    padding:3.5px 0;
+    font-size: 12px;
+}
+.first-news>div:last-child{
+    padding: 5px 0;
+    margin-left: 10px;
+    overflow: hidden;
+}
+.first-news>div{
+    height: 80px;
+}
+.first-news>div:first-child{
+    width:22%;
+    font-size:20px;
+    text-align: center;
+    padding-top: 10px;
+    color: #FE8537;
+    border-right: 1px solid #eee;
+}
+.first-news{
+    height:80px;
+    background-color: #fff;
+    border-radius: 20px;
+    display: flex;
+    margin-bottom: 15px;
+    margin-top: -10px;
+}
 .top-header .serach input{
     width:100%;
     border-radius: 20px; 
@@ -186,16 +235,16 @@
     flex-wrap: wrap;
 }
 #row-item .row-item-col{
-    width:20%;
+    width:25%;
 }
 #row-item .row-item-col{
-    height:80px;
+    height:100px;
     text-align:center;
     line-height:45px;
 }
 #row-item .row-item-col>div{
     line-height:35px;
-    font-size:10px;
+    font-size:12px;
     color: #666;
 }
 #row-item img{

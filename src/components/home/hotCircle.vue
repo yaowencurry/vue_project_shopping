@@ -46,6 +46,9 @@
                     <div class="content-img">
                         <img :src="item.content_img1">
                         <img :src="item.content_img2">
+                        <img :src="item.content_img1">
+                        <img :src="item.content_img2">
+                        <img :src="item.content_img2">
                         <!--img :src="item.content_img3"-->
                     </div>
                     <div class="like" @click="likeme">赞一个({{item.zan_count}})</div>
@@ -54,7 +57,7 @@
             <hr>
         </div>
         <div class="post-content">
-            <a @click="sendContent">发表评论</a>
+            <a @click="sendContent">写心情</a>
         </div>
         <tabbar></tabbar>
     </div>
@@ -123,7 +126,6 @@ export default {
 }
 .content-item>.content-all{
     font-size:12px;
-    height:60px;
     line-height: 20px;
     margin-bottom: 5px;
     overflow: hidden;
@@ -132,12 +134,13 @@ export default {
     width:100%;
     display: flex;
     justify-content:flex-start;
-    height:100px;
+    flex-wrap: wrap;
 }
 .content-item>.content-img>img{
-    width:90px;
-    height:90px;
+    width:85px;
+    height:85px;
     margin-right:5px;
+    margin-bottom: 5px;
 }
 .content-item>.like{
     float:right;
@@ -148,6 +151,7 @@ export default {
 .content>.myimg>img{
     width:50px;
     height:50px;
+    border-radius: 10px;
 }
 .content>.content-item{
     width:80%;
