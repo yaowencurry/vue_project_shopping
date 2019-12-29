@@ -79,6 +79,11 @@
                 </ul>
             </div>
             <button @click="loginout" class="layui-btn layui-btn-disabled">退出登录</button>
+            <!-- <form action="http://49.232.158.155:3000/upload"
+     method="POST" enctype="multipart/form-data">
+                <input type="file" name="mypic" id=""><br>
+                <button>提交</button>
+            </form> -->
         </div>
     </div>
 </template>
