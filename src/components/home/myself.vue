@@ -139,7 +139,7 @@ export default {
                 Toast(result.data.msg);
                 this.$router.push("/home");
                 //清除购物车数量
-                //this.$store.commit("updateCartCount",0);
+                this.$store.commit("updateCartCount",0);
             })
         }
     },

@@ -36,7 +36,7 @@
                     <img :src="'http://49.232.158.155:3000/'+item.md">
                 </div>
                 <div class="cart-info">
-                    <h4>{{item.title.length > 45 ? item.title.slice(0,45) +'...' : item.title}}</h4>
+                    <h4 :data-pid="item.pid" @click="jumpProductInfo">{{item.title.length > 45 ? item.title.slice(0,45) +'...' : item.title}}</h4>
                     <span style="color:red;font-size:18px;">¥&nbsp;{{item.price.toFixed(2)}}</span>
                     <span class="cart-count-handle">
                         <div class="mui-numbox">
@@ -75,6 +75,10 @@ export default {
         }
     },
     methods:{
+        jumpProductInfo(e){
+            var pid = e.target.dataset.pid;
+            this.$router.push("/goodsinfo?pid="+pid)
+        },
         getShopCart(){
             var uid=2;
             var url=`http://49.232.158.155:3000/getShopCart?uid=${uid}`;
@@ -94,7 +98,6 @@ export default {
                         confirmButtonText:'确认',
                         cancelButtonText:'取消'
                     }).then(action => {
-                        console.log(23);
                         if (action == 'confirm') {
                             this.$router.push("/login");
                         }
