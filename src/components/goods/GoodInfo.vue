@@ -64,8 +64,13 @@
         <!--底部加购物车、立即购买按钮框-->
         <div class="good-handle">
             <div class="cart-icon">
-                <i class="layui-icon layui-icon-rate"><!--span>{{this.$store.getters.commit('optCartCount')}}</span--></i>
-                <i class="layui-icon layui-icon-cart" @click="jumpCart"></i>
+                <i class="layui-icon" :class="isSave==0 ? 'layui-icon-rate' : 'layui-icon-rate-solid'" @click="myLike">
+                </i>
+                <i class="layui-icon layui-icon-cart" @click="jumpCart">
+                    <span>
+                        {{$store.getters.optCartCount}}
+                    </span>
+                </i>
             </div>
             <div class="cart-handle" @click="AddCart">加入购物车</div>
             <div class="shop-handle" @click="goShop">立即购买</div>
@@ -73,26 +78,34 @@
         <!--加入购物车弹出页面-->
         <div class="cart-container" v-show="cartShow">
             <div class="cart-info-parent">
-                <div class="cart-info">
-                    <div class="cart-info-header">
+                <div class="cart-info-position">
+                    <div class="cart-info">
                         <img :src="goodinfo.nmd" class="cart-img">
+                        <div class="product-head-info">
+                            <p>￥{{goodinfo.price.toFixed(2)}}</p>
+                            <p>库存：9999</p>
+                            <span>{{colorSpecInfo}}</span>
+                        </div>
                         <i class="layui-icon layui-icon-close" @click="closeCart"></i>
                     </div>
                 </div>
                 <div class="cart-spec-info">
                     <ul>
-                        <li v-for="(item,i) in spec" :key="i">{{item.spec}}</li>
+                        <li v-for="(item,index) in spec" :key="index" @click="getActive($event,index)" :class="active == index ? 'spec-active' : ''" :data-spec="item.spec">{{item.spec}}</li>
                     </ul>
-                </div>
-                <div class="cart-mui-numbox">
-                    购买数量:
+                    <div class="cart-mui-numbox">
+                        购买数量:
                         <div class="mui-numbox">
                             <button class="mui-btn mui-btn-numbox-minus" type="button" @click="getCount(-1)">-</button>
                             <input class="mui-input-numbox" type="number" v-model="count"/>
                             <button class="mui-btn mui-btn-numbox-plus" type="button"  @click="getCount(1)">+</button>
                         </div>
                     </div>
-                <div class="cart-confirm" @click="addCart">确认</div>
+                </div>
+
+                <div style="height:50px;">
+                    <div class="cart-confirm" @click="addCart">确认</div>
+                </div>
             </div>
         </div>
     </div>
@@ -109,10 +122,25 @@ export default {
             rows:[],
             isShow:10,
             cartShow:false,
-            spec:[]
+            spec:[],
+            active:-1,
+            isSave:0,
+            colorSpecInfo:"选择颜色分类",
+            productPrice:0
         }
     },
     methods:{
+        myLike(){
+            if(this.isSave==0){
+                this.isSave=1;
+            }else{
+                this.isSave=0;
+            }
+        },
+        getActive(e,index){
+            this.active = index;
+            this.colorSpecInfo = e.target.dataset.spec;
+        },
         goShop(){
             var pid = this.$route.query.pid;
             this.$router.push("/order?lid="+pid+"&count="+this.count+"&price="+this.goodinfo.price+"&spec="+this.goodinfo.spec+"&title="+this.goodinfo.title+"&lname="+this.goodinfo.lname+"&img_md="+this.goodinfo.nmd);
@@ -180,7 +208,7 @@ export default {
             this.axios.get(url).then(result=>{
                 Toast(result.data.msg);
                 //修改全局购物车商品数量
-                // this.$store.commit("increment");
+                this.$store.commit("increment");
             })
             this.cartShow=false;
         }
@@ -196,6 +224,13 @@ export default {
 }
 </script>
 <style scoped>
+.product-head-info>p:first-child{
+    color: #eb3c40;
+    font-size: 24px;
+}
+.product-head-info{
+    padding: 18px 15px;
+}
 .goodinfo-header{
     width:100%;
     height:40px;
@@ -214,6 +249,10 @@ export default {
 .cart-mui-numbox{
     padding:20px;
 }
+.spec-active{
+    background-color: #eb3c40;
+    color: #fff;
+}
 .cart-spec-info li{
     display: inline-block;  
     border:1px solid #ccc;
@@ -223,6 +262,8 @@ export default {
 .cart-spec-info{
     width:100%;
     padding:20px;
+    height: 330px;
+    overflow: scroll;
 }
 .cart-section>span:last-child{
     color:#333;
@@ -261,18 +302,33 @@ export default {
     text-align: center;
     line-height: 50px;
 }
-.layui-icon-close{
+.cart-info .layui-icon-close{
     position: absolute;
-    right:10px;
-    top:10px;
+    right: 10px;
+    top: 10px;
+    border: 1px solid #aaa;
+    border-radius: 50%;
+    color: #aaa;
+    font-size: 16px;
 }
-.cart-info-header{
+.cart-info-position{
+    height:120px;
+    width:100%;
+    background-color: #fff;
     position: relative;
+}
+.cart-info{
+    position: fixed;
+    background-color: #fff;
+    width: 100%;
+    display: flex;
 }
 .cart-img{
     width:80;
     height:80px;
     border:1px solid #ddd;
+    margin-left: 20px;
+    margin-top: 20px;
 }
 .cart-info-parent{
     width:100%;

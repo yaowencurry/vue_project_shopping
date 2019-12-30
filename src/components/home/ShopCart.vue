@@ -15,14 +15,14 @@
             </div>
         </div>-->
         <goback style="top:8px;"></goback>
-        <div style="height:50px;"></div>
+        <div style="height:40px;"></div>
         <div class="cart-top">
             <span>购物车</span>
         </div>
         <div class="cart-handle">
             <div>
-                <input type="checkbox" style="width:20px;height:20px;" @click="setectAll" :checked="cball">全选
-                <button class="layui-btn layui-btn-sm layui-btn-danger" @click="removeItem">删除选中</button> 
+                <input type="checkbox" style="width:20px;height:20px;" @click="setectAll" :checked="cball">
+                <button class="layui-btn layui-btn-sm layui-btn-primary" @click="removeItem">删除选中</button> 
             </div>
             <div>小计：￥<span style="color:red;font-size:18px;">{{countPrice.toFixed(2)}}</span> </div>
             <button class="layui-btn layui-btn-sm layui-btn-normal">立即下单</button>
@@ -36,17 +36,17 @@
                     <img :src="'http://49.232.158.155:3000/'+item.md">
                 </div>
                 <div class="cart-info">
-                    <h4>{{item.title}}</h4>
-                    <p style="color:red;">¥&nbsp;{{item.price.toFixed(2)}}</p>
-                    <div class="mui-numbox">
-                        <button class="mui-btn mui-btn-numbox-minus" type="button" @click="updateCount($event,-1)" :data-id="item.id" :data-pid="item.pid" :data-price="item.price" :data-count="item.count">-</button>
-                        <input class="mui-input-numbox" type="number" v-model="item.count"/>
-                        <button class="mui-btn mui-btn-numbox-plus" type="button"  @click="updateCount($event,1)" :data-id="item.id" :data-pid="item.pid" :data-price="item.price" :data-count="item.count">+</button>
-                    </div>
-                    <i class="layui-icon layui-icon-delete" @click="delItem" :data-id="item.id"></i>
+                    <h4>{{item.title.length > 45 ? item.title.slice(0,45) +'...' : item.title}}</h4>
+                    <span style="color:red;font-size:18px;">¥&nbsp;{{item.price.toFixed(2)}}</span>
+                    <span class="cart-count-handle">
+                        <div class="mui-numbox">
+                            <button class="mui-btn mui-btn-numbox-minus" type="button" @click="updateCount($event,-1)" :data-id="item.id" :data-pid="item.pid" :data-price="item.price" :data-count="item.count">-</button>
+                            <input class="mui-input-numbox" type="number" v-model="item.count"/>
+                            <button class="mui-btn mui-btn-numbox-plus" type="button"  @click="updateCount($event,1)" :data-id="item.id" :data-pid="item.pid" :data-price="item.price" :data-count="item.count">+</button>
+                        </div>
+                    </span>
                 </div>
             </div>
-            <hr>
         </div>
         <tabbar></tabbar>
         <!--占位，避免fied元素挡住内容>
@@ -107,7 +107,7 @@ export default {
                 }
                 var rows=result.data.data;
                 //修改全局购物车中商品的数量
-                // this.$store.commit("updateCartCount",rows.length);
+                this.$store.commit("updateCartCount",rows.length);
                 for(var item of rows){
                     item.cb=false;
                 }
@@ -180,83 +180,114 @@ export default {
 }
 </script>
 <style scoped>
-    .cart-top{
-        height:40px;
-        width:100%;
-        background-color: #fff;
-        position: fixed;
-        top:0;
-        text-align:center;
-        line-height:40px;
-        z-index: 10;
-        border-bottom:1px solid #e4e2e2;
-    }
-    .cart-top>span{
-        margin:0 auto;
-        color:#333333;
-        font-size:18px;
-    }
-    .layui-icon-delete{
-        font-size:24px;
-        margin:3px 0 0 13px;
-    }
-    .cart-list{
-        padding:5px 10px;
-        display:flex;
-        justify-content: space-between;
-        width:100%;
-    }
-    .cart-checkbox{
-        width:10%;
-        line-height: 100px;
-    }
-    .cart-img{
-        width:30%;
-        line-height: 100px;
-    }
-    .cart-img>img{
-        width:80px;
-        height:80px;
-    }
-    .cart-info{
-        width:60%;
-    }
-    .cart-info>h4{
-        font-size:12px;
-        line-height:17px;
-        font-weight: 400;
-    }
-    .cart-info>p{
-        font-size:16px;
-        margin:10px 0;
-    }
-    .cart-item{
-        position: relative;
-        top:50%;
-        margin: 5px 0;
-        line-height: 31px;
-    }
-    h4{
-        line-height: 31px;
-    }
-    .checkbox{
-        width:20px;
-        height:20px;
-        padding:0;
-        margin:0;
-        background:#fff;
-        border:1px solid #333333;
-    }
-    .cart-handle{
-        width:100%;
-        height:50px;
-        background:#fff;
-        padding:10px 20px;
-        display:flex;
-        justify-content: space-between;
-        position: fixed;
-        bottom:46px;
-        left:0px;
-        z-index:10;
-    }
+.layui-btn-sm{
+    width:50px;
+    font-size: 10px;
+    text-align: center;
+    padding: 0;
+}
+.layui-icon-delete{
+    color: #999;
+    position: absolute;
+    font-size:24px;
+    margin-left: 5px;
+}
+.cart-info .cart-count-handle{
+    margin-left: 30px;
+}
+.mui-numbox{
+    width: 75px;
+    height: 31px;
+    padding: 0;
+}
+.mui-numbox [class*=numbox-btn], .mui-numbox [class*=btn-numbox]{
+    width: 22px;
+}
+.layui-btn-normal{
+    background-color: #f83c31;
+    width:95px;
+    height: 50px;
+    font-size: 16px;
+}
+.cart-top{
+    height:40px;
+    width:100%;
+    background-color: #fff;
+    position: fixed;
+    top:0;
+    text-align:center;
+    line-height:40px;
+    z-index: 10;
+    border-bottom:1px solid #e4e2e2;
+}
+.cart-top>span{
+    margin:0 auto;
+    color:#333333;
+    font-size:18px;
+    font-weight: bold;
+}
+.cart-list{
+    padding:10px 10px;
+    display:flex;
+    justify-content: space-between;
+    width:100%;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+.cart-checkbox{
+    width:10%;
+    line-height: 70px;
+}
+.cart-img{
+    width:30%;
+    line-height: 80px;
+}
+.cart-img>img{
+    width:80px;
+    height:80px;
+}
+.cart-info{
+    width:60%;
+}
+.cart-info>h4{
+    font-size:14px;
+    line-height:23px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    font-weight: 549;
+}
+.cart-info>span{
+    font-size:16px;
+    margin:10px 0;
+}
+.cart-item{
+    position: relative;
+    top:50%;
+    margin: 5px 0;
+    line-height: 31px;
+}
+h4{
+    line-height: 31px;
+}
+.checkbox{
+    width:20px;
+    height:20px;
+    padding:0;
+    margin:0;
+    background:#fff;
+    border:1px solid #333333;
+}
+.cart-handle{
+    width:100%;
+    height:50px;
+    background:#fff;
+    padding-left:20px;
+    display:flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom:46px;
+    left:0px;
+    z-index:10;
+    align-items: center;
+}
 </style>

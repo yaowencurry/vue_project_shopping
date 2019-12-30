@@ -45,7 +45,6 @@
                     <div class="content-all">{{item.content}}</div>
                     <div class="content-img">
                         <img :src="item.content_img1">
-                        <img :src="item.content_img2">
                         <img :src="item.content_img1">
                         <img :src="item.content_img2">
                         <img :src="item.content_img2">
@@ -91,6 +90,19 @@ export default {
 }
 </script>
 <style scoped>
+.big-img>img{
+    width:100%;
+}
+.big-img{
+    width:100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: #000;
+    position: fixed;
+    top:0;
+    display: table-cell;
+    vertical-align: middle;
+}
 .post-content{
     position: fixed;
     bottom:80px;

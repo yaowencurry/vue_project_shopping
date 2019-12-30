@@ -10,7 +10,11 @@
                 <input type="text" name="" id="" placeholder="请输入商品名称" v-model="content" @keyup.13="search">
                 <i class="layui-icon layui-icon-search" @click="search"></i>
             </div>
-            <i class="layui-icon layui-icon-cart" style="color:#fff;font-size:28px;" @click="jumpShopCart"></i>
+            <i class="layui-icon layui-icon-cart" style="color:#fff;font-size:28px;" @click="jumpShopCart">
+                <span style="width:18px;height:18px;background-color:#fff;display:inline-block;border-radius:50%;position:absolute;top:8px;right:6px;color:#f83c31;font-size:14px;line-height:19px;text-align:center;">
+                    {{$store.getters.optCartCount}}
+                </span>
+            </i>
         </div>
         <!--顶部栏-->
         <!--banner图片-->
@@ -67,7 +71,7 @@
         <!--咨询信息-->
         <div class="first-news">
             <div>最新<br>快讯</div>
-            <div :class="{anim:animate==true}">
+            <div>
                 <p v-for="(item,i) in items" :key="i">{{item.name}}</p>
             </div>
         </div>
@@ -106,7 +110,7 @@
                     this.items.push(this.items[0]);
                     this.items.shift();
                     this.animate=false;
-                }, 1500);
+                }, 1700);
             },
             search(){
                 var content=this.content;
@@ -153,7 +157,7 @@
     margin-top: -30px;
 }
 .first-news>div>p{
-    color:#333;
+    color: #FE8537;
     padding:3.5px 0;
     font-size: 12px;
 }

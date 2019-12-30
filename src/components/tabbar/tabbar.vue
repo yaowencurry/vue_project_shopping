@@ -12,8 +12,7 @@
             <router-link class="mui-tab-item" to="/shopcart" :class="{active:shows==3}" @click.native="getActive3">
                 <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
                     <span class="mui-badge">
-                        <!--
-                    {{$store.getters.optCartCount}}-->
+                        {{$store.getters.optCartCount}}
                     </span>
                 </span>
                 <span class="mui-tab-label">购物车</span>

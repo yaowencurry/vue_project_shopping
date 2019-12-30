@@ -16,6 +16,20 @@
             <div class="common-myself myself-order">
                 <ul>
                     <li>
+                        <img src="../../assets/img/save.png" alt="">
+                        <div>
+                            <span>收藏的商品</span>
+                            <span>
+                                <span>6</span>
+                                <i class="layui-icon layui-icon-right"></i>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="common-myself myself-order">
+                <ul>
+                    <li>
                         <img src="../../assets/img/sell01.png" alt="">
                         <div>
                             <span>待发货订单</span>
@@ -114,7 +128,6 @@ export default {
                         }
                     });
                 }else{
-                    console.log(result);
                     this.info=result.data.data[0];
                     _that.isLogin=false;
                 }
@@ -169,7 +182,6 @@ export default {
 }
 .myself-order>ul>li{
     padding: 10px 0;
-    margin-top: 5px;
     display: flex;
 }
 .myself-order{
@@ -211,7 +223,7 @@ export default {
     background-color: #f83c31;
 }
 .common-myself{
-    padding: 10px 20px;
+    padding: 3px 20px;
     background-color: #fff
 }
 .myself-info{

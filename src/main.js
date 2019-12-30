@@ -76,6 +76,11 @@ import '../static/lib/layui/css/layui.css'
 import '../static/lib/layui/css/layui.mobile.css'
 
 
+//引入图片预览组件
+import preview from 'vue-photo-preview'
+import 'vue-photo-preview/dist/skin.css'
+Vue.use(preview)
+
 //配置测试和正式环境下的接口地址
 import BaseUrl from './assets/js/apiUrl.js';
 Vue.prototype.BaseUrl = BaseUrl;
@@ -172,5 +177,6 @@ new Vue({
   el: '#app',
   router,
   components: { App },
+  store,
   template: '<App/>'
 })
