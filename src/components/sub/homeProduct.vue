@@ -74,14 +74,13 @@ export default {
 }
 .product-card{
     width:49.5%;
-    height:220px;
     border:1px solid rgb(233, 229, 229);
     margin-bottom:5px;
     background-color: #fff;
+    padding-bottom: 10px;
 }
 .product-card a img{
     width:100%;
-    height:144px;
     border-radius: 15px 15px 0 0;
 }
 .product-card a p{

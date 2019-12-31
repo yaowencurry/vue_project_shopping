@@ -170,6 +170,10 @@ export default {
                 }
             }
             html=html.substring(0,html.length-1);
+            if(html.length<1){
+                Toast("请选择要删除项");
+                return;
+            }
             var url="http://49.232.158.155:3000/delItem?ids="+html;
             this.axios.get(url).then(result=>{
                 Toast(result.data.msg);

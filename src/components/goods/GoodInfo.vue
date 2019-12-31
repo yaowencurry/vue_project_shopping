@@ -57,8 +57,9 @@
                     <br><br><br><br><br><br>
                 </ul>
             </div>
-            <div class="commit-info" v-else>
-                评价详情
+            <div class="commit-info product-comment" v-else>
+                <img src="../../../public/goodinfo/nocomment-base.png"><br>
+                暂无评价
             </div>
         </div>
         <!--底部加购物车、立即购买按钮框-->
@@ -224,6 +225,13 @@ export default {
 }
 </script>
 <style scoped>
+.product-comment img{
+    margin-top: 10px;
+    width:80px;
+}
+.product-comment{
+    text-align: center;
+}
 .product-head-info>p:first-child{
     color: #eb3c40;
     font-size: 24px;
@@ -248,6 +256,8 @@ export default {
 }
 .cart-mui-numbox{
     padding:20px;
+    padding-left: 0;
+    font-weight: bold;
 }
 .spec-active{
     background-color: #eb3c40;
@@ -264,6 +274,7 @@ export default {
     padding:20px;
     height: 330px;
     overflow: scroll;
+    padding-top: 0px;
 }
 .cart-section>span:last-child{
     color:#333;
