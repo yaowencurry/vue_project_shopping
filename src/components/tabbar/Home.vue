@@ -10,7 +10,11 @@
                 <input type="text" name="" id="" placeholder="请输入商品名称" v-model="content" @keyup.13="search">
                 <i class="layui-icon layui-icon-search" @click="search"></i>
             </div>
-            <i class="layui-icon layui-icon-cart" style="color:#fff;font-size:28px;" @click="jumpShopCart"></i>
+            <i class="layui-icon layui-icon-cart" style="color:#fff;font-size:28px;" @click="jumpShopCart">
+                <span style="width:18px;height:18px;background-color:#fff;display:inline-block;border-radius:50%;position:absolute;top:8px;right:6px;color:#f83c31;font-size:14px;line-height:19px;text-align:center;">
+                    {{$store.getters.optCartCount}}
+                </span>
+            </i>
         </div>
         <!--顶部栏-->
         <!--banner图片-->
@@ -30,38 +34,38 @@
             </router-link>
         </div>
         <!--九宫格-->
-        <div style="padding:10px;" id="row-item">
+        <div id="row-item">
             <div class="row-item-col" @click="jumpNew">
-                <img src="https://m.360buyimg.com/mobilecms/s120x120_jfs/t1/20983/16/10753/6124/5c8a16aaE5d6b15d7/01e0e818a7505267.png.webp" alt="">
+                <img src="../../../public/home/01.png" alt="">
                 <div>好品新闻</div>
             </div>
             <div class="row-item-col" @click="goPhone">
-                <img src="https://m.360buyimg.com/mobilecms/s120x120_jfs/t1/39401/17/2391/5859/5cc06fcfE2ad40668/28cda0a571b4a576.png.webp" alt="">
+                <img src="../../../public/home/02.png" alt="">
                 <div>好品超市</div>
             </div>
             <div class="row-item-col">
-                <img src="https://m.360buyimg.com/mobilecms/s120x120_jfs/t1/17169/3/4127/4611/5c2f35cfEd87b0dd5/65c0cdc1362635fc.png.webp" alt="">
+                <img src="../../../public/home/03.png" alt="">
                 <div>好品服饰</div>
             </div>
             <div class="row-item-col">
-                <img src="https://m.360buyimg.com/mobilecms/s120x120_jfs/t17725/156/1767366877/17404/f45d418b/5ad87bf0N66c5db7c.png.webp" alt="">
+                <img src="../../../public/home/04.png" alt="">
                 <div>好品生鲜</div>
             </div>
             <div class="row-item-col">
-                <img src="https://m.360buyimg.com/mobilecms/s120x120_jfs/t16990/157/2001547525/17770/a7b93378/5ae01befN2494769f.png.webp" alt="">
+                <img src="../../../public/home/05.png" alt="">
                 <div>好品到家</div>
             </div>
             <div class="row-item-col">
-                <img src="https://m.360buyimg.com/mobilecms/s120x120_jfs/t18454/342/2607665324/6406/273daced/5b03b74eN3541598d.png.webp" alt="">
+                <img src="../../../public/home/06.png" alt="">
                 <div>充值缴费</div>
             </div>
             <div class="row-item-col">
-                <img src="https://m.360buyimg.com/mobilecms/s120x120_jfs/t22228/270/207441984/11564/88140ab7/5b03fae3N67f78fe3.png.webp" alt="">
+                <img src="../../../public/home/07.png" alt="">
                 <div>领券拼团</div>
             </div>
             <div class="row-item-col">
-                <img src="https://m.360buyimg.com/mobilecms/s120x120_jfs/t16990/157/2001547525/17770/a7b93378/5ae01befN2494769f.png.webp" alt="">
-                <div>好品到家</div>
+                <img src="../../../public/home/08.png" alt="">
+                <div>天天淘</div>
             </div>
         </div>
         <!--咨询信息-->
@@ -106,7 +110,7 @@
                     this.items.push(this.items[0]);
                     this.items.shift();
                     this.animate=false;
-                }, 1500);
+                }, 1700);
             },
             search(){
                 var content=this.content;
@@ -153,7 +157,7 @@
     margin-top: -30px;
 }
 .first-news>div>p{
-    color:#333;
+    color: #f83c31;
     padding:3.5px 0;
     font-size: 12px;
 }
@@ -170,16 +174,15 @@
     font-size:20px;
     text-align: center;
     padding-top: 10px;
-    color: #FE8537;
+    color: #f83c31;;
     border-right: 1px solid #eee;
 }
 .first-news{
     height:80px;
     background-color: #fff;
-    border-radius: 20px;
     display: flex;
     margin-bottom: 15px;
-    margin-top: -10px;
+    margin-top: 15px;
 }
 .top-header .serach input{
     width:100%;
@@ -233,12 +236,10 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    background-color: #fff;
 }
 #row-item .row-item-col{
     width:25%;
-}
-#row-item .row-item-col{
-    height:100px;
     text-align:center;
     line-height:45px;
 }
