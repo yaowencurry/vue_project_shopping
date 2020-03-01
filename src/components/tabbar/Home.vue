@@ -67,7 +67,7 @@
         <!--咨询信息-->
         <div class="first-news">
             <div>最新<br>快讯</div>
-            <div :class="{anim:animate==true}">
+            <div>
                 <p v-for="(item,i) in items" :key="i">{{item.name}}</p>
             </div>
         </div>

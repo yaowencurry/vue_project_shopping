@@ -34,7 +34,9 @@ Vue.use(Vuex);
 //创建store对象
 var store=new Vuex.Store({
   state:{
-    cartCount:sessionStorage.getItem("cartCount") || 0
+    cartCount:sessionStorage.getItem("cartCount") || 0,
+    userId:"",
+    count:0
   },
   mutations:{
     increment(state){
@@ -50,6 +52,18 @@ var store=new Vuex.Store({
       return state.cartCount;
     }
   }
+})
+//2020-03-01  全局路由守卫
+router.beforeEach((to,from,next)=>{
+	if(to.meta.requireAuth){
+		if(store.state.userId != ""){
+			next()
+		}else{
+      next({path:'/login'})
+		}
+	}else{
+		next()
+	}
 })
 
 import 'mint-ui/lib/style.css'

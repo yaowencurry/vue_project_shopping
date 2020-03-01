@@ -14,6 +14,8 @@ import Myself from "@/components/home/myself.vue";
 import SendHotCircle from "@/components/home/sendHotCilcre.vue";
 import Register from "@/components/home/Register.vue";
 import Order from "@/components/home/Order.vue";
+import Test from "@/components/test/test.vue";
+import Parent from "@/components/test/parent.vue"
 Vue.use(Router)
 
 export default new Router({
@@ -31,6 +33,10 @@ export default new Router({
     {path:'/myself',component:Myself},
     {path:'/sendhotcircle',component:SendHotCircle},
     {path:'/register',component:Register},
-    {path:'/order',component:Order}
+    {path:'/order',component:Order},
+    {path:'/test',component:Test,meta:{
+      requireAuth:true
+    }},
+    {path:'/parent',component:Parent}
   ]
 })
