@@ -36,7 +36,7 @@ var store=new Vuex.Store({
   state:{
     cartCount:sessionStorage.getItem("cartCount") || 0,
     userId:"",
-    count:0
+    count:10
   },
   mutations:{
     increment(state){
@@ -91,9 +91,9 @@ import '../static/lib/layui/css/layui.mobile.css'
 
 
 //引入图片预览组件
-import preview from 'vue-photo-preview'
-import 'vue-photo-preview/dist/skin.css'
-Vue.use(preview)
+// import preview from 'vue-photo-preview'
+// import 'vue-photo-preview/dist/skin.css'
+// Vue.use(preview)
 
 //配置测试和正式环境下的接口地址
 import BaseUrl from './assets/js/apiUrl.js';

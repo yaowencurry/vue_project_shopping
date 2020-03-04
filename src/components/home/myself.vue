@@ -1,5 +1,5 @@
 <template>
-    <div class="app-myself">
+    <div class="app-myself" :class="skinClass">
         <tabbar></tabbar>
         <div style="width:100%;height:100%;background-color:rgba(0,0,0,0.8);z-index:999;position:fixed;" v-show="isLogin"></div>
         <div class="myself">
@@ -12,6 +12,12 @@
                     <p>Mobile: {{info.mobile}}</p>
                     <p>签名: 我们终将逝去的青春···</p>
                 </div>
+                <select name="skin" id="s1" @change="changeSkin($event)">
+                    <option value="normal">默认</option>
+                    <option value="black">暗夜</option>
+                    <option value="blue">天空</option>
+                    <option value="pink">粉红</option>
+                </select>
             </div>
             <div class="common-myself myself-order">
                 <ul>
@@ -108,10 +114,32 @@ export default {
     data(){
         return {
             info:{},
-            isLogin:false
+            isLogin:false,
+            skinClass:"",
+            skinValue:""
         }
     },
     methods:{
+        changeSkin(event){
+            this.skinValue = event.target.value;
+            switch(this.skinValue){
+                case "black":
+                    this.skinClass="black";
+                    break;
+                case "blue":
+                    this.skinClass="blue";
+                    break;
+                case "pink":
+                    this.skinClass="pink";
+                    break;
+                default:
+                    this.skinClass="";
+                    break;
+            }
+            var skinValue = this.skinValue;
+            localStorage.setItem("key",skinValue);
+            console.log(localStorage.getItem("key"));
+        },
         getMemberInfo(){
             var url="http://49.232.158.155:3000/myself"
             var _that = this;
@@ -150,10 +178,37 @@ export default {
     },
     created(){
         this.getMemberInfo();
+        this.skinClass = localStorage.getItem("key");
     }
 }
 </script>
 <style scoped>
+.pink div,select{
+    background-color: pink;
+    color: yellow;
+}
+.blue div,select{
+    background-color: blue;
+    color: #fff;
+}
+.black div,select{
+    background-color: black;
+    color: #fff;
+}
+select{
+    background: #fff;
+    color: #333333;
+}
+body{
+    background-color: #000000;
+}
+#s1{
+    position: absolute;
+    width: 100px;
+    border: 1px solid #bfbfbf;
+    top: 27px;
+    right: 17px;
+}
 .layui-icon-right{
     float: right;
 }
