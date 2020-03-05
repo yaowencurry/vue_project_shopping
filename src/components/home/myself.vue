@@ -138,7 +138,6 @@ export default {
             }
             var skinValue = this.skinValue;
             localStorage.setItem("key",skinValue);
-            console.log(localStorage.getItem("key"));
         },
         getMemberInfo(){
             var url="http://49.232.158.155:3000/myself"
@@ -196,7 +195,7 @@ export default {
     color: #fff;
 }
 select{
-    background: #fff;
+    background-color: #fff;
     color: #333333;
 }
 body{
